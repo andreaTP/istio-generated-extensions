@@ -2,12 +2,13 @@
 before_install:
   - sdk install java 11.0.15-tem
   - sdk use java 11.0.15-tem
+  - curl -Ls https://github.com/a8m/envsubst/releases/download/v1.2.0/envsubst-`uname -s`-`uname -m` -o envsubst && chmod +x envsubst
   - curl -Ls https://sh.jbang.dev | bash -s - app setup
   - curl -Ls https://github.com/codacy/git-version/releases/download/2.8.0/git-version -o git-version && chmod a+x git-version
   - curl -Ls https://raw.githubusercontent.com/istio/istio/master/manifests/charts/base/crds/crd-all.gen.yaml -o istio.yaml
 install:
-  - envsubst < istio.java.template > istio.java
-  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:${FABRIC8_VERSION} --add-extra-annotations --source istio.yaml --target ./src
+  - ./envsubst < istio.java.template > istio.java
+  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:${FABRIC8_VERSION} --source istio.yaml --target ./src
   - ~/.jbang/bin/jbang export mavenrepo --force -O target --group=com.github.andreatp --artifact=istio-generated-extensions --version=$(./git-version) istio.java
   - mkdir -p ~/.m2/repository
   - cp -rv target/* ~/.m2/repository/

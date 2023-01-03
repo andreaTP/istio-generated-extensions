@@ -1,5 +1,3 @@
 //DEPS io.fabric8:kubernetes-client:$FABRIC8_VERSION
 //DEPS io.fabric8:generator-annotations:$FABRIC8_VERSION
-//DEPS io.sundr:builder-annotations:0.93.1
-//DEPS org.projectlombok:lombok:1.18.24
 //SOURCES src/**.java

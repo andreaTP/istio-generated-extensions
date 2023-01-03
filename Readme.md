@@ -1,6 +1,5 @@
 
-Here it goes automation to directly fetch and publish generated Java Code from CRDs
+[![Release](https://jitpack.io/v/com.github.andreatp/istio-generated-extensions.svg)]
+(https://jitpack.io/#com.github.andreatp/istio-generated-extensions)
 
-Schedule + Hash ? -> versions?
-Pull mode download the CRDs check an hash and republish? How to version?
-
+This is an example repo that shows how to publish the generated fabric8 kubernetes-client libraries to jitpack easily.

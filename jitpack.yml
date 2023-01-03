@@ -4,6 +4,6 @@ before_install:
   - curl -Ls https://github.com/codacy/git-version/releases/download/2.8.0/git-version && chmod a+x git-version
 install:
   - ./java-gen -u https://raw.githubusercontent.com/istio/istio/master/manifests/charts/base/crds/crd-all.gen.yaml --target ./src
-  - ~/.jbang/bin/jbang export mavenrepo --force -O target --group=com.github.andreatp --artifact=istio-generated-extensions --version=1.0.0-SNAPSHOT istio.java
+  - ~/.jbang/bin/jbang export mavenrepo --force -O target --group=com.github.andreatp --artifact=istio-generated-extensions --version=$(./git-version) istio.java
   - mkdir -p ~/.m2/repository
   - cp -rv target/* ~/.m2/repository/

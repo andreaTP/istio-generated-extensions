@@ -1,5 +1,7 @@
 # From: https://www.jbang.dev/documentation/guide/latest/exporting.html
 before_install:
+  - sdk install java 11.0.17-tem
+  - sdk use java 11.0.17-tem
   - curl -Ls https://sh.jbang.dev | bash -s - app setup
   - curl -Ls https://github.com/codacy/git-version/releases/download/2.8.0/git-version -o git-version && chmod a+x git-version
   - curl -Ls https://raw.githubusercontent.com/istio/istio/master/manifests/charts/base/crds/crd-all.gen.yaml -o istio.yaml

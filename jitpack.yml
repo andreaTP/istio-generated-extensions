@@ -7,7 +7,7 @@ before_install:
   - curl -Ls https://raw.githubusercontent.com/istio/istio/master/manifests/charts/base/crds/crd-all.gen.yaml -o istio.yaml
 install:
   - envsubst < istio.java.template > istio.java
-  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:${FABRIC8_VERSION} --source istio.yaml --target ./src
+  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:${FABRIC8_VERSION} --add-extra-annotations --source istio.yaml --target ./src
   - ~/.jbang/bin/jbang export mavenrepo --force -O target --group=com.github.andreatp --artifact=istio-generated-extensions --version=$(./git-version) istio.java
   - mkdir -p ~/.m2/repository
   - cp -rv target/* ~/.m2/repository/

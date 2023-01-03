@@ -6,7 +6,9 @@ before_install:
   - curl -Ls https://github.com/codacy/git-version/releases/download/2.8.0/git-version -o git-version && chmod a+x git-version
   - curl -Ls https://raw.githubusercontent.com/istio/istio/master/manifests/charts/base/crds/crd-all.gen.yaml -o istio.yaml
 install:
-  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:6.3.1 --source istio.yaml --target ./src
+  - ~/.jbang/bin/jbang io.fabric8:java-generator-cli:${FABRIC8_VERSION} --source istio.yaml --target ./src
   - ~/.jbang/bin/jbang export mavenrepo --force -O target --group=com.github.andreatp --artifact=istio-generated-extensions --version=$(./git-version) istio.java
   - mkdir -p ~/.m2/repository
   - cp -rv target/* ~/.m2/repository/
+env:
+  FABRIC8_VERSION: "6.3.1"
